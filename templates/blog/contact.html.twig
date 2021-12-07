@@ -1,0 +1,49 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Contact{% endblock %}
+
+{% block body %}
+
+    {% for message in app.flashes('success') %}
+
+        <div class="col-md-5 mx-auto alert alert-success text-center">
+            {{ message }}
+        </div>
+
+    {% endfor %}
+
+	<h2 class="text-center mt-5">Formulaire de contact</h2>
+
+{{ form_start(formContact) }}
+
+{{ form_row(formContact.firstname, {
+        'label': "Prénom",
+        'attr':{
+            'placeholder': "Votre prénom"
+        }
+    }) }}
+
+{{ form_row(formContact.lastname, {
+        'label': "Nom",
+        'attr': {
+            'placeholder': "Votre nom"
+        }
+    }) }}
+
+{{ form_row(formContact.email, {
+		'label': 'Adresse mail',
+		'attr': {
+            'placeholder': "Votre adresse mail"
+    	}
+}) }}
+
+{{ form_row(formContact.message, {
+		'attr': {
+            'placeholder': "Votre message"
+    	}
+}) }}
+
+<button type="submit" class="btn btn-primary mt-2"> Envoyer le message</button>
+
+{{ form_end(formContact) }}
+{% endblock %}

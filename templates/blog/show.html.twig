@@ -1,0 +1,58 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+	<article class="col-md-3 mx-auto text-center border border-dark mb-3 p-3 mt-3 mr-1">
+
+		<h2>{{ article.title }}</h2>
+
+		<div class="metadata">
+			Ecrit le
+			{{ article.createdAt | date ('d/m/Y à H:i:s')}}
+			dans la catégorie
+			{{article.category.title}}
+		</div>
+
+		<div class="content">
+
+			<img src="{{ asset('images/articles/' ~ article.image) }}" alt=" Image de {{ article.title }}">
+
+			{{ article.content | raw }}
+
+		</div>
+
+		<a href="{{ path('blog_edit', {'id': article.id}) }}" class="btn btn-success" style="width: 150px">Editer</a>
+
+	</article>
+
+	<h2 class="text-center mx-auto m-3">Commentaires</h2>
+
+	{# Affichage de faux commentaires #}
+
+	<section id="commentaire" class="col-md-10 mx-auto">
+
+		{% for comment in article.comments %}
+
+			<div class="comment">
+
+				<div class="row">
+
+					<div class="col-md-3">
+
+						{{ comment.author }}
+						(<small>Posté le
+							{{comment.createdAt | date('d/m/Y à H:i:s')}}
+						</small>)
+					</div>
+					<div class="col-md-9">
+						{{comment.content | raw }}
+
+					</div>
+				</div>
+			</div><hr>
+
+		{% endfor %}
+
+	</section>
+
+{% endblock %}
