@@ -3,9 +3,8 @@ security:
         App\Entity\User:
             algorithm: auto
             # algorithm: auto choisit automatiquement le meilleur algorithme
-            # Mais nous pouvons mettre l'algorithme que l'on veut 
-
-    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+            # Mais nous pouvons mettre l'algorithme que l'on veut voir la documentation au lien suivant
+            # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         # used to reload user from session & other features (e.g. switch_user)
         app_user_provider:

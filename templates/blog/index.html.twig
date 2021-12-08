@@ -9,11 +9,11 @@
 
 	<section class="row articles">
 		{% for article in articles %}
-			<article class="col-md-4 mx-auto text-center border border-dark border-3 mb-3 p-3 mt-3 mr-1">
+			<article class="col-md-5 mx-auto text-center border border-dark border-1 mb-3 p-3 mt-3">
 
 				<h2>{{ article.title }}</h2>
 
-				<div class="metadata">Ecrit le
+				<div class="metadata mb-3">Ecrit le
 					{{ article.createdAt | date('d/m/Y à H:i:s') }}<br>
 					dans la categorie
 					{{ article.category.title}}
@@ -21,11 +21,11 @@
 
 				<div class="content">
 
-					<img src="{{ asset('images/articles/' ~ article.image) }}" alt="" style="width: 150px">
+					<img src="{{ asset('images/articles/' ~ article.image) }}" alt="" style="width: 150px"><br> <br>
 					{# asset() est une fonction TWIG permettant entre autres d'afficher une image en lui passant le chemin vers  #}
-					{{ article.content | slice(0, 10) | raw}}<br> <br>
+					{{ article.content | slice(0, 30) | raw}}<br> <br>
 					{# slice permet d'afficher le nombre de mot dans l'article #}
-					<a href="{{path('blog_show', {'id': article.id})}}" class="btn btn-danger">Lire la suite</a>
+					<a href="{{ path('blog_show', {'id': article.id}) }}" class="btn btn-danger" style="width: 150px; margin: 20px 0">Lire la suite</a>
 				</div>
 			</article>
 		{% endfor %}

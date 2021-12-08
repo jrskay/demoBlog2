@@ -3,4 +3,5 @@ twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
     exception_controller: null
+    # Pour utiliser bootstrap sur les formulaires
     form_themes: ['bootstrap_4_layout.html.twig']
